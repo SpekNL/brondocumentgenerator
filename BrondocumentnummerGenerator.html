@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Brondocumentnummer Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 20px auto; }
+    label, select, input, button { display: block; margin-bottom: 10px; width: 100%; }
+    button { padding: 10px; background-color: #0078d4; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #005a9e; }
+    #resultaat { font-weight: bold; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Brondocumentnummer Generator</h2>
+  <label for="bron">Bron:</label>
+  <select id="bron">
+    <option value="BGT">BGT</option>
+    <option value="WOZ">WOZ</option>
+    <option value="VTH">VTH</option>
+    <option value="TMK">TMK</option>
+    <option value="DBK">DBK</option>
+    <option value="PNL">PostNL</option>
+  </select>
+
+  <label for="gebeurtenis">Gebeurtenis:</label>
+  <select id="gebeurtenis">
+    <option value="COR">COR-Correctie</option>
+    <option value="VZV">VZV-Verbouwing zonder vergunning</option>
+    <option value="OPC">OPC-Ontvangen postcode</option>
+    <option value="MAB">MAB-Afzien van bouw</option>
+    <option value="MAV">MAV-Afzien van verbouwing</option>
+    <option value="MSB">MSB-Start bouw</option>
+    <option value="MGB">MGB-Gebruiksgereed</option>
+    <option value="VG">VG-Verbouwing gereed</option>
+    <option value="BIG">BIG-Ingemeten geometrie</option>
+    <option value="MGS">MGS-Sloop afgerond</option>
+    <option value="ISV">ISV-Intrekken sloopvergunning</option>
+    <option value="AIO">AIO-Attribuut in onderzoek</option>
+    <option value="OA">OA-Onderzoek afgerond</option>
+    <option value="FGO">FGO-Formalisering object</option>
+  </select>
+
+  <label for="datum">Datum:</label>
+  <input type="date" id="datum">
+
+  <button onclick="genereer()">Genereer Brondocumentnummer</button>
+  <p><strong>Resultaat:</strong> <span id="resultaat"></span></p>
+
+  <script>
+    function genereer() {
+      const bron = document.getElementById("bron").value;
+      const gebeurtenis = document.getElementById("gebeurtenis").value;
+      const datum = document.getElementById("datum").value.replace(/-/g, "");
+      const resultaat = `${bron}/${gebeurtenis}/${datum}`;
+      document.getElementById("resultaat").textContent = resultaat;
+    }
+  </script>
+</body>
+</html>
